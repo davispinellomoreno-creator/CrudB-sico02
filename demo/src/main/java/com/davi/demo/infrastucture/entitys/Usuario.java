@@ -3,12 +3,15 @@ package com.davi.demo.infrastucture.entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.sql.ConnectionBuilder;
+
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table ( name = "Cadastro Usuario")
+@Table ( name = "Cadastro_Usuario")
 @Entity
 public class Usuario {
 
@@ -24,5 +27,7 @@ public class Usuario {
 
     @Column(name = "idade")
     private int name;
+
+
 
 }

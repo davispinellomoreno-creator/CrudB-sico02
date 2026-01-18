@@ -2,9 +2,12 @@ package com.davi.demo.business;
 
 import com.davi.demo.infrastucture.entitys.Usuario;
 import com.davi.demo.infrastucture.repository.RepositoryUsuario;
-import org.springframework.data.annotation.Id;
+
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import org.yaml.snakeyaml.events.Event;
+
+
+
 
 @Service
 public class UsuarioService {
@@ -15,20 +18,30 @@ public class UsuarioService {
         this.repositoryUsuario = repositoryUsuario;
     }
 
-    public void UsuarioService(Usuario usuario){
+    public void UsuarioService(Usuario usuario) {
         repositoryUsuario.saveAndFlush(usuario);
     }
+
     public Usuario buscarUsuarioPorID(Long id) {
         return repositoryUsuario.findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Usuário não encontrado"));
     }
+
     public void deletarUsuario(Long ID) {
         repositoryUsuario.deleteById(ID);
     }
-    public void atualizarUsuario(Long ID) {
 
+    @Transactional
+    public void atualizarUsuario(Long id) {
+
+        Usuario usuario = repositoryUsuario.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+
+
+        repositoryUsuario.save(usuario);
     }
-
 }
+
 
