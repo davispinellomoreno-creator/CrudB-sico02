@@ -36,7 +36,7 @@ public class UsuarioService {
     public void atualizarUsuario(Long id) {
 
         Usuario usuario = repositoryUsuario.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Usuário não atualizado"));
 
 
 
