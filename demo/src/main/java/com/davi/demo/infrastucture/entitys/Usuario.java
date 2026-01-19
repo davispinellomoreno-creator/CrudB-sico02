@@ -3,7 +3,7 @@ package com.davi.demo.infrastucture.entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.ConnectionBuilder;
+
 
 
 @Getter
@@ -11,13 +11,14 @@ import java.sql.ConnectionBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table ( name = "Cadastro_Usuario")
 @Entity
+@Table ( name = "Cadastro_Usuario")
+
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    long ID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long ID;
 
     @Column(name = "nome")
     private String nome;
@@ -26,7 +27,7 @@ public class Usuario {
     private String email;
 
     @Column(name = "idade")
-    private int name;
+    private Integer idade;
 
 
 
