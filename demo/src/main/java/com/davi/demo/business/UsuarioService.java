@@ -32,16 +32,7 @@ public class UsuarioService {
         repositoryUsuario.deleteById(ID);
     }
 
-    @Transactional
-    public void atualizarUsuario(Long id) {
 
-        Usuario usuario = repositoryUsuario.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não atualizado"));
-
-
-
-        repositoryUsuario.save(usuario);
-    }
 }
 
 
