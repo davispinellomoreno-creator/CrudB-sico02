@@ -30,5 +30,4 @@ public class Usuario {
     private Integer idade;
 
 
-
 }
