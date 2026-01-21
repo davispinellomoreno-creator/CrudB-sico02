@@ -1,16 +1,13 @@
 package com.davi.demo.controller;
 
 import com.davi.demo.business.UsuarioService;
-import lombok.RequiredArgsConstructor;
+import com.davi.demo.infrastucture.entitys.Usuario;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/paginadousuario")
-@RequiredArgsConstructor
+
 public class UsuarioController {
 
     private final UsuarioService usuarioService ;
@@ -19,8 +16,29 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
+
+
+
     @PostMapping
-    public ResponseEntity<Void> salvarUsuario(@RequestBody Usuario)
+    public ResponseEntity<Void> salvarUsuario(@RequestBody Usuario usuario) {
+
+        usuarioService.salvarUsuario(usuario);
+
+        return ResponseEntity.ok().build();
+    }
+    @DeleteMapping
+    public ResponseEntity<Void> deletarUsuario(@RequestBody Long id){
+        usuarioService.deletarUsuario(id);
+
+        return ResponseEntity.ok().build();
+    }
+     @GetMapping
+    public ResponseEntity<Usuario> buscarUsuarioPorId (@RequestBody Long id){
+         return ResponseEntity.ok(usuarioService.buscarUsuarioPorID(id));
+     }
+
+
+
 
 
 

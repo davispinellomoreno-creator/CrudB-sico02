@@ -18,7 +18,7 @@ public class UsuarioService {
         this.repositoryUsuario = repositoryUsuario;
     }
 
-    public void UsuarioService(Usuario usuario) {
+    public void salvarUsuario(Usuario usuario) {
         repositoryUsuario.saveAndFlush(usuario);
     }
 
@@ -31,6 +31,17 @@ public class UsuarioService {
     public void deletarUsuario(Long ID) {
         repositoryUsuario.deleteById(ID);
     }
+
+    public void atualizarUsuarioPorEmail(Long id, Usuario usuario){
+        Usuario usuarioEntity = buscarUsuarioPorID(id);
+        Usuario usuarioStualizado = Usuario.builder()
+                .ID(usuario.getID() != null ?
+                        usuario.getID() : usuarioEntity.getID()  )
+                .nome(usuario.getNome() != null ? usuario.getNome() : usuarioEntity.getNome())
+                .email(usuario.getEmail() != null ? usuario.getEmail() : usuarioEntity.getEmail())
+                .build();
+    }
+
 }
 
 
