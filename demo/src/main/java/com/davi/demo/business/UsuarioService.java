@@ -3,10 +3,9 @@ package com.davi.demo.business;
 import com.davi.demo.infrastucture.entitys.Usuario;
 import com.davi.demo.infrastucture.repository.RepositoryUsuario;
 
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-
+import javax.naming.directory.Attribute;
 
 
 @Service
@@ -32,8 +31,9 @@ public class UsuarioService {
         repositoryUsuario.deleteById(ID);
     }
 
-    public void atualizarUsuarioPorEmail(Long id, Usuario usuario){
+    public void atualizarUsuarioPorId(Long id){
         Usuario usuarioEntity = buscarUsuarioPorID(id);
+
         Usuario usuarioStualizado = Usuario.builder()
                 .ID(usuario.getID() != null ?
                         usuario.getID() : usuarioEntity.getID()  )

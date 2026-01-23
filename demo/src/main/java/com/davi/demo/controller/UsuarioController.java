@@ -27,16 +27,20 @@ public class UsuarioController {
         return ResponseEntity.ok().build();
     }
     @DeleteMapping
-    public ResponseEntity<Void> deletarUsuario(@RequestBody Long id){
+    public ResponseEntity<Void> deletarUsuario(@RequestParam Long id){
         usuarioService.deletarUsuario(id);
 
         return ResponseEntity.ok().build();
     }
      @GetMapping
-    public ResponseEntity<Usuario> buscarUsuarioPorId (@RequestBody Long id){
+    public ResponseEntity<Usuario> buscarUsuarioPorId (@RequestParam Long id){
          return ResponseEntity.ok(usuarioService.buscarUsuarioPorID(id));
      }
-
+     @PutMapping
+    public ResponseEntity<Void> atualizarUsuarioPorId (@RequestParam Long id){
+        usuarioService.atualizarUsuarioPorId(id);
+        return ResponseEntity.ok().build();
+     }
 
 
 
