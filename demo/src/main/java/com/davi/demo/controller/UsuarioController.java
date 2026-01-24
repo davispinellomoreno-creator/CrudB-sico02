@@ -12,12 +12,13 @@ import org.yaml.snakeyaml.events.Event;
 public class UsuarioController {
 
     private final UsuarioService usuarioService ;
-    private final Usuario usuario;
+    private Usuario usuario;
 
-    public UsuarioController(UsuarioService usuarioService, Usuario usuario) {
+
+    public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
 
-        this.usuario = usuario;
+
     }
 
 
