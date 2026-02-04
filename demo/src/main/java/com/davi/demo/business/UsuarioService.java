@@ -48,6 +48,7 @@ public class UsuarioService {
                 .email(usuario.getEmail() != null
                         ? usuario.getEmail()
                         : usuarioEntity.getEmail())
+
                 .build();
 
         return repositoryUsuario.save(usuarioAtualizado);
